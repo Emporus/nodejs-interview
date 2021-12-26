@@ -1,0 +1,8 @@
+{
+    "email": "testuser@gmail.com",
+    "firstName": "Tim",
+    "lastName": "Lan",
+    "watchedStocks": ["AAPL", "TSLA"],
+    "companyName": "MakeMoney",
+    "password": "$2a$12$r1vV1dV.uFNTSVlL.hPnTu0lDkPRB1Tt0cLz7LeW3G5CFQgjJLyie"
+}

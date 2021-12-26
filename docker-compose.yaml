@@ -1,0 +1,29 @@
+version: '2.1'
+
+services:
+  mongodb-local:
+    image: mongo
+    container_name: mongodb-local
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=12345678
+      - MONGO_INITDB_DATABASE=market_analysis
+    volumes:
+      - ~/dev/mongodb-local/market_analysis:/market_analysis/db
+      - ./db-utils/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    networks:
+      - market-analysys-network
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo 10.10.10.60:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+volumes:
+  mongodb-data:
+    name: mongodb-market_analysis
+networks:
+  market-analysys-network:
+    name: market-analysys-network
